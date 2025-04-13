@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2j9=uwg#x0l4+^t6rfx#8t3b2c!9@j#kc1^f+f8!5-0b8e&4kj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -154,6 +154,5 @@ LOGOUT_REDIRECT_URL = 'users:home'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:8990",
     "https://ashafoundationlife.apstor.org"
 ]
