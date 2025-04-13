@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block banner %}
+<!-- No banner on Contact page -->
+{% endblock %}
+{% block title %}Add Progress Report{% endblock %}
+
+{% block content %}
+<div class="container">
+  <a href="{% url 'users:home' %}" class="btn btn-secondary mb-3">← Back</a>
+  <h2>Add Progress Report</h2>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <a href="{% url 'users:progress_report_list' %}" class="btn btn-secondary">← Go Back</a>
+  <hr>
+  <h4>Registered Users</h4>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Plan</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for report in progress_reports %}
+        <tr>
+          <td>{{ report.created_at|date:"Y-m-d H:i" }}</td>
+          <td>{{ report.plan }}</td>
+          <td>{{ report.name }}</td>
+          <td>{{ report.address }}</td>
+          <td>{{ report.phone }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No reports available.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

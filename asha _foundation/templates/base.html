@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Asha Foundation | {% block title %}{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{% static 'img/logo.jpg' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Your custom styles (optional) -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+    {% if not form %}
+        {% include "navbar.html" %}
+    {% endif %}
+
+    <!-- Start your project here-->
+    {% block banner %}
+    <!-- Carousel Wrapper -->
+    <div id="bannerCarousel" class="carousel slide carousel-fade mb-4" data-ride="carousel" data-interval="3000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="{% static 'img/1.jpg' %}" alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="{% static 'img/2.jpg' %}" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="{% static 'img/3.jpg' %}" alt="Third slide">
+        </div>
+      </div>
+    </div>
+    <!-- /Carousel Wrapper -->
+    {% endblock %}
+    
+
+        {% block content %}
+        <div class="container mt-5">
+        <div class="flex-center flex-column">
+            <h1 class="animated fadeIn mb-4">Material Design </h1>
+            
+            <p>   At Asha Foundation, we believe every drop of blood holds the power to save a life. Through our regular blood donation camps, we bridge the gap between compassionate donors and those in urgent need—whether it’s a trauma patient, a mother battling childbirth complications, a child fighting cancer, or someone undergoing critical surgery. Partnering with hospitals and healthcare institutions, we organize safe, efficient, and hygienic donation drives across communities, ensuring no one suffers due to a shortage of blood. </p>
+            <p>  Our mission goes beyond collecting blood; we aim to build a culture of giving. With each camp, hundreds of donors step forward, driven by the simple yet profound act of sharing a part of themselves to give others a chance at life. From first-time donors to regular contributors, every participant becomes a hero in someone’s story. </p>
+        
+        </div>
+        </div>
+        {% endblock %}
+        {% block content2 %}
+        {% endblock %}
+    </div>
+    <!-- /Start your project here-->
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white mt-5">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Asha Foundation</h5>
+                    <p>Asha Foundation empowers communities by saving lives through blood donation, educating underprivileged children, and championing women’s development. Together, we build health, knowledge, and equality—one act of kindness at a time.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'users:home' %}" class="text-white">Home</a></li>
+                        <li><a href="{% url 'users:household_create' %}" class="text-white">Beneficiary Registration</a></li>
+                        <li><a href="{% url 'users:progress_report_create' %}" class="text-white">Progress Report</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact</h5>
+                    <p>Email: asha.foundation@aol.com</p>
+                    
+                    <p>Address: Shivaji Park, Hehal, Ranchi - 834005</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center py-3 bg-secondary">
+            © {{ year|default:"2025" }} Asha Foundation. All rights reserved.
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    {% block script %}
+    {% endblock %}
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+</body>
+
+</html>

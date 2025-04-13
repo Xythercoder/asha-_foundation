@@ -1,0 +1,109 @@
+{% comment %} 
+
+
+<h2>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Household Data</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+
+<a href="{% url 'users:household_list' %}">Back to List</a> {% endcomment %}
+
+
+{% load static %}
+{% block banner %}
+<!-- No banner on Contact page -->
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Benificiery Registration</title>
+
+  <!-- Bootstrap 4 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- 3D Style CSS -->
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0eafc, #cfdef3);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card-3d {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      padding: 40px;
+      width: 100%;
+      max-width: 600px;
+      transform: perspective(1000px) rotateX(2deg) rotateY(-1deg);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .card-3d:hover {
+      transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #007bff;
+      font-weight: 600;
+    }
+
+    .form-control {
+      border-radius: 10px;
+      padding: 10px 15px;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-3d {
+      border-radius: 10px;
+      padding: 10px;
+      font-weight: 600;
+      transition: transform 0.2s ease-in-out;
+      box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+    }
+
+    .btn-3d:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 123, 255, 0.5);
+    }
+
+    .btn-secondary {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card-3d">
+    <a href="{% url 'users:home' %}" class="btn btn-secondary mb-3">← Back</a>
+    <h2>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Benificiery Registration</h2>
+
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+
+    <a href="{% url 'users:household_list' %}" class="btn btn-secondary">← Go Back</a>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+

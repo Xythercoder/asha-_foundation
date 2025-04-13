@@ -1,0 +1,13 @@
+asgiref==3.7.2
+certifi==2024.2.2
+charset-normalizer==3.3.2
+Django==5.0.3
+django-utils-six==2.0
+django-widget-tweaks==1.5.0
+idna==3.6
+python-decouple==3.8
+requests==2.31.0
+six==1.16.0
+sqlparse==0.4.4
+typing_extensions==4.10.0
+urllib3==2.2.1

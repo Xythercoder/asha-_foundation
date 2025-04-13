@@ -1,0 +1,25 @@
+{% comment %} <h2>Are you sure you want to delete this household data?</h2>
+
+<p>Name: {{ instance.name }}</p>
+<p>Age: {{ instance.age }}</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Confirm Delete</button>
+</form>
+
+<a href="{% url 'users:household_list' %}">Cancel</a> {% endcomment %}
+
+
+<h2>Are you sure you want to delete this household data?</h2>
+
+<p>Name: {{ record.name }}</p>
+<p>Age: {{ record.age }}</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Confirm Delete</button>
+</form>
+
+<a href="{% url 'users:household_list' %}">Cancel</a>  <!-- Ensure correct namespace -->
+

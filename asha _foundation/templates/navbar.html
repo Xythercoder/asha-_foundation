@@ -1,0 +1,114 @@
+{% comment %} <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+    <div class="container">
+      <!-- Brand -->
+      <a class="navbar-brand font-weight-bold" href="{% url 'users:home' %}">Vatsal</a>
+  
+      <!-- Toggler (for mobile) -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+            <a class="nav-link" href="{% url 'users:home' %}">Home</a>
+          </li>
+          <li class="nav-item {% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+            <a class="nav-link" href="{% url 'users:about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:contact' %}">Contact</a>
+          </li>
+          {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profiles:profile-edit' user.profile.id %}">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'users:household_create' %}">Benificiery Registration</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'users:progress_report_create' %}">Progress Report</a>
+            </li>
+          {% endif %}
+        </ul>
+  
+        <!-- Right side buttons -->
+        <div class="navbar-nav ml-auto align-items-center">
+          {% if request.user.is_authenticated %}
+            <span class="nav-link text-dark">
+              <i class="fa fa-user"></i> {{ request.user }}
+            </span>
+            <a href="{% url 'logout' %}" class="btn btn-warning btn-sm ml-2 text-dark font-weight-bold">Logout</a>
+          {% else %}
+            <a href="{% url 'login' %}" class="btn btn-warning btn-sm ml-2 text-dark font-weight-bold">Login</a>
+
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+   {% endcomment %}
+
+
+<!-- Navbar -->
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm ">
+    <div class="container">
+      <!-- Brand -->
+      <a class="navbar-brand" href="{% url 'users:home' %}">
+        <img src="{% static 'img/logo.jpg' %}" alt="Asha Foundation Logo" height="55" class="d-inline-block align-top">
+      </a>
+  
+      <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Nav Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Left Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+            <a class="nav-link font-weight-bold text-dark" href="{% url 'users:home' %}">Home</a>
+          </li>
+          <li class="nav-item {% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+            <a class="nav-link font-weight-bold text-dark" href="{% url 'users:about' %}">About</a>
+          </li>
+  
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link font-weight-bold text-dark" href="{% url 'profiles:profile-edit' user.profile.id %}"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link font-weight-bold text-dark" href="{% url 'users:household_list' %}">Beneficiary Registration</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link font-weight-bold text-dark" href="{% url 'users:progress_report_list' %}">Progress Report</a>
+            </li>
+          {% endif %}
+        </ul>
+  
+        <!-- Right Side: Contact + Auth Buttons -->
+        <div class="navbar-nav ml-auto align-items-center">
+          <a class="nav-link font-weight-bold text-dark" href="{% url 'users:contact' %}">
+            <i class="fa fa-envelope"></i> Contact
+          </a>
+  
+          {% if user.is_authenticated %}
+            <a class="btn btn-warning btn-sm ml-2 text-dark font-weight-bold" href="{% url 'logout' %}">Logout</a>
+            <span class="nav-link font-weight-bold text-dark ml-2">
+              <i class="fa fa-user"></i> {{ user }}
+            </span>
+          {% else %}
+            <a class="btn btn-warning btn-sm ml-2 text-dark font-weight-bold" href="{% url 'login' %}">Login</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  
