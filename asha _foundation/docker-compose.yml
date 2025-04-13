@@ -11,7 +11,7 @@ services:
     networks:
       - appz-network 
 
-  nginxServer:
+  server:
     image: nginx:latest
     restart: always
     ports:
