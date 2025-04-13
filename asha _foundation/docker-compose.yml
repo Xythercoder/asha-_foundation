@@ -11,7 +11,7 @@ services:
     networks:
       - appz-network 
 
-  nginx:
+  nginxServer:
     image: nginx:latest
     restart: always
     ports:
@@ -24,6 +24,6 @@ services:
     networks:
       - appz-network
 
-  networks:
+networks:
   appz-network:
-    driver: bridge 
+    driver: bridge
