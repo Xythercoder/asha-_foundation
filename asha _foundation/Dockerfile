@@ -1,8 +1,5 @@
 FROM python:3.12.10-slim-bookworm AS BASE
 
-ENV PYTHONUNBUFFERED 1
-ENV PYTHONDONTWRITEBYTECODE 1
-
 WORKDIR /app
 
 COPY ./requirements.txt ./
