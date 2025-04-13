@@ -1,0 +1,22 @@
+version: '3'
+services:
+  backend:
+    build: .
+    command: sh -c "python3 manage.py makemigrations && python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && gunicorn --config gunicorn_config.py website.wsgi:application"
+    restart: always
+    expose:
+      - "8000"
+    volumes:
+      - ./:/app
+      - /var/www/static/:/var/www/static/
+
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "80:8189"
+    volumes:
+      - /var/www/static/:/var/www/static/
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    depends_on:
+      - backend
